@@ -5,15 +5,17 @@ import org.springframework.stereotype.Service;
 import web.dao.UserDao;
 import web.dao.UserDaoImpl;
 import web.model.User;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
 
 public class UserServiceImpl implements UserService {
+    private final UserDao uD;
     @Autowired
-    UserDao uD = new UserDaoImpl();
+    public UserServiceImpl(UserDao uD) {
+        this.uD = uD;
+    }
 
     @Override
     @Transactional
@@ -34,13 +36,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User getUser(Long id) {
         return uD.getUser(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getAllUser() {
         return uD.getAllUser();
     }
