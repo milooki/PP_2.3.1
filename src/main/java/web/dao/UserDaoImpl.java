@@ -1,15 +1,18 @@
 package web.dao;
+
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 import web.model.User;
+
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public void add(User user) {
         entityManager.persist(user);

@@ -41,7 +41,7 @@ public class AppConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan("web.model");
@@ -52,7 +52,8 @@ public class AppConfig {
         em.setJpaProperties(addProperties());
         return em;
     }
-    Properties addProperties(){
+
+    Properties addProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
@@ -61,6 +62,7 @@ public class AppConfig {
         properties.setProperty("hibernate.connection.useUnicode", "true");
         return properties;
     }
+
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

@@ -6,12 +6,14 @@ import web.dao.UserDao;
 import web.dao.UserDaoImpl;
 import web.model.User;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
 
 public class UserServiceImpl implements UserService {
     private final UserDao uD;
+
     @Autowired
     public UserServiceImpl(UserDao uD) {
         this.uD = uD;
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void delete(Long id){
+    public void delete(Long id) {
         uD.delete(id);
     }
 
