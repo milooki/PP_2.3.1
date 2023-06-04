@@ -13,8 +13,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private final UserDao uD;
-
-    @Autowired
+    
     public UserServiceImpl(UserDao uD) {
         this.uD = uD;
     }

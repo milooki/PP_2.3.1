@@ -26,9 +26,11 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(value = "web")
 public class AppConfig {
-
-    @Autowired
     private Environment env;
+
+    public AppConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource dataSource() {
